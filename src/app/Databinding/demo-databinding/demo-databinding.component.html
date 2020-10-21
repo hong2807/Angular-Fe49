@@ -1,0 +1,40 @@
+<h1 class="text-center">Demo Databinding</h1>
+
+<!-- interpolation -->
+<p>Hello {{ text }}</p>
+<p>Sum : {{ 1 + 1 }}</p>
+<p [innerHTML] = 'obHocVien.HoTen'></p>
+<p>Giới tính: {{obHocVien.GioiTinh}}</p>
+<hr>
+
+<!-- property binding -->
+<input class="bg-warning" placeholder="Email" [disabled]="isDisabled" />
+<img style='width: 300px; display:block; margin-top: 30px' [src]="imgSrc" />
+<hr>
+
+<!-- event binding-->
+<p>Name: {{ name }}</p>
+<button class="bg-danger text-white" (click)="changeName()">Change name</button>
+<hr>
+
+
+<!-- twoway binding -->
+<!-- input đổi >>> email đổi -->
+<input class="bg-success" [(ngModel)]="email" />
+<p>Email: {{ email }}</p>
+
+
+
+
+
+
+
+
+
+<!-- Có 2 cách databinding: one way binding & two way binding -->
+<!-- One way binding: -->   
+    <!-- interpolation: {{tên biến}}, {{tên hàm()}} -->
+    <!-- property binding: [value] -->
+    <!-- event binding:-->
+<!-- Two way binding: -->   
+    <!-- Phải import FormsModule vào mới sử dụng được -->
