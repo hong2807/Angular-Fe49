@@ -1,0 +1,101 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <p class="m-0">Quản lý sản phẩm</p>
+        </div>
+        <div class="card-body">
+            {{productId}}
+            {{productName}}
+            {{price}}
+            <div class="d-flex">
+                <!-- <input type="text" class="form-control mr-3" placeholder="MaSP"/>
+                <input type="text" class="form-control mr-3" placeholder="TenSP"/>
+                <input type="text" class="form-control mr-3" placeholder="Gia"/> -->
+
+                <input [(ngModel)]="productId" type="text" class="form-control mr-3" placeholder="MaSP"/>
+                <input [(ngModel)]="productName" type="text" class="form-control mr-3" placeholder="TenSP"/>
+                <input [(ngModel)]="price" type="text" class="form-control mr-3" placeholder="Gia"/>
+                <!-- Khi input thay đổi giá trị đồng thời các productID, productName, price cũng thay đổi theo -->
+
+                <!-- <button class="btn btn-success" style="flex-shrink: 0;">Thêm sản phẩm</button> -->
+                <button (click)="addProduct()" class="btn btn-success" style="flex-shrink: 0;">Thêm sản phẩm</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <p class="m-0">Danh sách sản phẩm</p>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <!-- <tr>
+                        <th>Mã SP</th>
+                        <th>Tên SP</th>
+                        <th>Giá</th>
+                    </tr> -->
+                    <!-- <tr>
+                        <th>STT</th>
+                        <th>Mã SP</th>
+                        <th>Tên SP</th>
+                        <th>Giá</th>
+                    </tr> -->
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã SP</th>
+                        <th>Tên SP</th>
+                        <th>Giá</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>1</td>
+                        <td>Iphone 11 Pro Max</td>
+                        <td>$1000</td>
+                    </tr> -->
+                    <!-- <tr *ngFor="let product of listProduct;  let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ product.MaSP}}</td>
+                        <td>{{ product.TenSP}}</td>
+                        <td>{{ product.Gia}}</td>
+                    </tr> -->
+                    <tr 
+                        [ngClass]="{ highlight: product.MaSP === spDuocChon?.MaSP }"
+                        class="text-primary"
+                        (click)="selectProduct(product)"*ngFor="let product of listProduct;  let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ product.MaSP}}</td>
+                        <td>{{ product.TenSP}}</td>
+                        <td>{{ product.Gia}}</td>
+                        <td>
+                            <button (click)="deleteProduct(product.MaSP)" class="btn btn-danger">Xóa</button>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- Nội dung: Xây dựng chức năng thêm, xóa sản phẩm -->
+<!-- Bước 1: xây dựng giao diện tĩnh: thêm sản phẩm, list sản phẩm -->
+<!-- Bước 2: làm động list sản phẩm dùng for dựa trên mảng listProduct -->
+<!-- Bước 3: làm chức năng thêm sản phẩm. Để thêm dc sản phẩm cần 3 yếu tố: mã sp, tên sp, giá-->
+    <!-- Lưu ý: chức năng thêm sp chỉ tồn tại tạm thời khi F5 là nó mất vì ko có chỗ để lưu -->
+    <!-- Lấy giá trị của ng dùng khi nhập vào 3 ô input rồi add vào mảng listProduct khi nhấn nút  thêm sp  -->
+    <!-- Clear các ô input khi nhấn nút thêm sp (hàm clear form) -->
+<!-- Bước 4: làm chức năng xóa sản phẩm. Để xóa được sản ta cần có id (là mã sp) -->
+    <!-- Lưu ý: chức năng xóa sp chỉ tồn tại tạm thời khi F5 là nó mất vì ko có chỗ để lưu -->
+    <!-- Truyền mã sp đang click và thông qua hàm deleProduct dùng param id để hứng lại, rồi đem đi so sánh mã sp trong listProduct có nào giống id (là cái lúc đầu mình click), dựa trên id đó để xóa sp-->
+<!-- Bước 5: làm chức năng khi click vào dòng sp nào bất kì, thì sp đó sẽ dc highlight lên -->
+    <!-- Lưu ý: chức năng highlight chỉ tồn tại tạm thời khi F5 là nó mất vì ko có chỗ để lưu -->
+    <!-- Truyền sp mà mình dùng for có dc đang click và thông qua hàm selectProduct và dùng param sanPham hứng lại, rồi gán lại cho biến spDuocChon bởi vì khi click là nó render lại nên phải có 1 biến hứng lại, khi render lại là nó chạy từ đầu và nó chạy từng sp trong vòng for rồi nó ssanh từng mã sp xem có mã sp nào giống mã sp trong biến spDuocChon (là cái lúc đầu mình click), dựa trên mã sp đó để tìm nguyên sp đó và hightlight lại -->

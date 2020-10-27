@@ -16,6 +16,9 @@ import { Ex2ContentComponent } from './Exercise-2/ex2-content/ex2-content.compon
 import { Ex2CardItemComponent } from './Exercise-2/ex2-card-item/ex2-card-item.component';
 import { DemoDatabindingComponent } from './Databinding/demo-databinding/demo-databinding.component';
 import { FormsModule } from '@angular/forms';
+import { ChangeColorCarComponent } from './change-color-car/change-color-car.component';
+import { DemoDirectiveComponent } from './demo-directive/demo-directive.component';
+import { ProductManagementComponent } from './product-management/product-management.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,7 @@ import { FormsModule } from '@angular/forms';
     Ex2CarouselComponent, 
     Ex2ContentComponent, 
     Ex2CardItemComponent, 
-    DemoDatabindingComponent,  
+    DemoDatabindingComponent, ChangeColorCarComponent, DemoDirectiveComponent, ProductManagementComponent,  
   ],
   imports: [
     BrowserModule,  FormsModule

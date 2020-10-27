@@ -1,0 +1,70 @@
+<div class="container">
+    <!-- -------------- *ngIf -------------- -->
+    <div>
+        <h2 class="text-primary" *ngIf="isCheck">Go to school</h2>
+        <h2 class="text-danger" *ngIf="!isCheck">Stay at home</h2>
+        <!-- True thì go to school, false stay at home -->
+        <hr>
+    </div>
+
+
+    <!-- -------------- *ngIf else -------------- -->
+    <div>
+        <h2 class="text-primary" *ngIf="isGo; else elseContent">Go to supermarket</h2>
+        <ng-template #elseContent>
+            <h2 class="text-danger">Go swimming</h2>
+        </ng-template>
+        <!-- True thì go to supermarket, false go swimming -->
+
+        <button class="btn btn-success mr-3" (click)="makeDecision(true)">Fine</button>
+        <button class="btn btn-warning" (click)="makeDecision(false)">Sick</button>
+        <h2 class="text-success" *ngIf="isFine; else noiDungKhac">Hang out</h2>
+        <ng-template #noiDungKhac>
+            <h2 class="text-warning">See a doctor</h2>
+        </ng-template>
+        <!-- Click vào Fine thì Hang out, Click vào Sick thì See a doctor -->
+        <hr>
+    </div>
+
+
+    <!-- -------------- [ngSwitch] -------------- -->
+    <div>
+        <div [ngSwitch]="thang">
+            <p *ngSwitchCase="1">Tháng 1 có 31 ngày</p>
+            <p *ngSwitchCase="2">Tháng 2 có 28 ngày</p>
+            <p *ngSwitchCase="3">Tháng 3 có 31 ngày</p>
+            <p *ngSwitchCase="4">Tháng 4 có 30 ngày</p>
+            <p *ngSwitchCase="5">Tháng 5 có 30 ngày</p>
+            <!-- Default -->
+            <p *ngSwitchDefault>Không biết !</p>
+        </div>
+
+        <select (change)="chonThang($event)">
+            <option value="1">Tháng 1</option>
+            <option value="2">Tháng 2</option>
+            <option value="3">Tháng 3</option>
+            <option value="4">Tháng 4</option>
+            <option value="5">Tháng 5</option>
+        </select>
+        <h2 class="text-warning">Selecting Month: {{ month }}</h2>
+        <hr>
+    </div>
+
+
+    <!-- -------------- *ngFor -------------- -->
+    <!-- Cách khác là dùng for -->
+    <select (change)="selectMonth($event)">
+        <option *ngFor="let item of monthOption" [value]="item.value">{{ item.title }}</option>
+    </select>
+    <h2 class="text-warning">Selecting Month: {{ mon }}</h2>
+</div>
+
+
+
+
+
+
+<!-- ng-template giống fragment bên react -->
+<!-- elseContent hay noiDungKhac là tên tự đặt nhưng ko dc trùng nhau nó như id  -->
+<!-- sử dụng cùng lúc 2 *ng trong cùng 1 thẻ là ko dc -->
+

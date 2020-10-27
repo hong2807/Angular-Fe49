@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="control text-center">
+        <img (click)="changeColor('black-car.jpg')" src="../../assets/img/icon-black.jpg"/>
+        <img (click)="changeColor('red-car.jpg')" src="../../assets/img/icon-red.jpg"/>
+        <img (click)="changeColor('silver-car.jpg')"src="../../assets/img/icon-silver.jpg"/>
+        <img (click)="changeColor('steel-car.jpg')" src="../../assets/img/icon-steel.jpg"/>
+    </div>
+      
+    <div class="text-center">
+        <!-- <img class="w-100" src="../../assets/img/black-car.jpg"/> -->
+        <!-- property binding -->
+        <img class="w-100" [src]="imgDefault" />
+    </div>
+</div>
+
+
+
+
+<!-- Nội dung: click vào icon màu nào, tấm hình sễ đổi thành màu đó -->
+<!-- Bước 1: xây dựng giao diện tĩnh, gồm 4 icon màu, 1 hình mặc định chiếc đen -->
+<!-- Bước 2: đặt tấm hình mặc đinh chiếc xe màu đen thành 1 biến-->
+<!-- Bước 3: tạo ra 1 hàm khi click vào icon màu truyền cho nó cái hình màu tương ứng -->
